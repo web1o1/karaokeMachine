@@ -1,0 +1,22 @@
+
+
+{
+  "manifest_version": 2,
+
+  "name": "Karaoke Helper",
+  "description": "Autoplay songs and lyrics for karaoke!",
+  "version": "1.0",
+
+  "permissions": [
+    "pageCapture",
+    "tabs"
+  ],
+
+  "background": { 
+         "scripts": ["js/background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
