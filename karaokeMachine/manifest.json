@@ -8,8 +8,14 @@
   "version": "1.0",
 
   "permissions": [
-    "pageCapture",
-    "tabs"
+    "tabs", "http://www.youtube.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["http://www.youtube.com/*&brenda=ok"],
+      "js": ["js/jquery.js", "content_script.js"]
+    }
   ],
 
   "background": { 
