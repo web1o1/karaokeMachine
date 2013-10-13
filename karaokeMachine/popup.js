@@ -1,12 +1,7 @@
 var bkg = chrome.extension.getBackgroundPage();
 
 //bkg.console.log("loaded");
-
 $(function () {
-  //bkg.console.log("jquery works");
-  // var songQ = $("input#find-song").val();
-  // bkg.console.log("input", $("#find-song"));
-  // bkg.console.log(songQ);
 
   $("#find-song button").click(function () {
     
@@ -36,3 +31,7 @@ $(function () {
   });
 
 });
+
+function loadNewSong () {
+  
+}
