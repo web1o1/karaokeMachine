@@ -25,12 +25,12 @@ $(function () {
 
     //  Video tab to create
     chrome.tabs.create({'url': videoQ}, function(tab) {
-      bkg.console.log("tab", tab);
+      //bkg.console.log("tab", tab);
     });
 
     //  Lyrics tab to create
     chrome.tabs.create({'url': lyricsQ}, function(tab) {
-      bkg.console.log("tab", tab);
+      //bkg.console.log("tab", tab);
     });
 
   });
