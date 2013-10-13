@@ -1,0 +1,43 @@
+form {
+	width: 330px;
+	margin: 0 auto;
+
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+
+input{
+	padding: 7px 15px;
+}
+
+form button{
+	padding: 7px 15px;
+	border: none;
+	background-color: #87D69B;
+}
+
+#song-list{
+	width: 400px;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+#song-list .delete{
+	padding: 5px 7px;
+	border: none;
+	background-color: #FF6666;
+	float: right;
+
+}
+
+#song-list li{
+	padding: 0px 3px;
+}
+
+#song-list li:after{
+	content: "";
+	display: block;
+	clear: both;
+}
