@@ -15,7 +15,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://www.youtube.com/*", "http://rapgenius.com/*&brenda=ok"],
+      "matches": ["http://www.youtube.com/*", "http://rapgenius.com/*"],
       "js": ["js/jquery.js", "content_script.js", "js/player_api.js"]
     }
   ],
