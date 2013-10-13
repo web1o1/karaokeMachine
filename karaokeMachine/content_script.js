@@ -27,6 +27,7 @@ function loadRapGenius () {
 
 $(function () {
 	
+	console.log("background page variable", chrome.extension.getBackgroundPage().video_finished);
 
 
 	loadVideo();
