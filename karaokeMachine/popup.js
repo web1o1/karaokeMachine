@@ -31,7 +31,7 @@ $(function () {
 
     }
 
-    bkg.console.log("song list", $("#songs"));
+    //bkg.console.log("song list", $("#songs"));
     // puts song in list
     bkg.songs.push(songInput);
 
@@ -43,12 +43,23 @@ $(function () {
     bkg.console.log("checking background song status", bkg.songDone);
 
     for (var i in songs){
-      $("#songs").append("<li>" + songs[i] + "</li>");
+      $("#songs").append("<li>" + songs[i] + "<button class='delete'>delete</button></li>");
     }
 
-    bkg.console.log("songs list", songs);
+    //bkg.console.log("songs list", songs);
+    $(".delete").click(function () {
+      bkg.console.log("delete is clicked");
+      var songs = bkg.songs;
+      bkg.console.log("delete icon", $(this).parent().index());
 
-    bkg.console.log($("#songs"));
+      //  Gets index of element to delete
+      var songInd = $(this).parent().index();
+
+      songs.splice(songInd);
+      bkg.console.log("new songs list", songs);
+      location.reload();
+    });
+    //bkg.console.log($("#songs"));
   }
 
 });
