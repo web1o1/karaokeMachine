@@ -22,7 +22,21 @@ function loadVideo () {
 
 //  THE LYRICS
 function loadRapGenius () {
-	
+
+	console.log("url", window.location.href);
+	// Checks if it is youtube, then parses the DOM
+	if ( (window.location.href).indexOf("rapgenius") !== -1){
+		var first_lyrics = $(".search_results > li:first-child > a")[0];
+
+		var lyrics_link = first_lyrics.href;
+
+		console.log("lyrics", first_lyrics);
+		console.log("vid link", lyrics_link);
+
+		//Loads in window
+		window.location = lyrics_link;
+	}
+
 }
 
 $(function () {
