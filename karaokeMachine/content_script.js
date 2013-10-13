@@ -52,7 +52,7 @@ function loadRapGenius () {
 
 	console.log("url", window.location.href);
 	// Checks if it is rapgenius, then parses the DOM
-	if ( (window.location.href).indexOf("http://rapgenius.com/search?") !== -1){
+	if ( (window.location.href).indexOf("rapgenius") !== -1){
 		var first_lyrics = $(".search_results > li:first-child > a")[0];
 
 		var lyrics_link = first_lyrics.href;
