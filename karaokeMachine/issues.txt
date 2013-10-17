@@ -1,0 +1,7 @@
+
+BUGS
+	- closes all youtube videos after playing them
+	- clears first song from list after closing
+
+FEATURES
+	- clearing song list
