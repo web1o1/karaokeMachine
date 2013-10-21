@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>CatBird Karaoke Machine</title>
     <style>
       body {
-        min-width: 357px;
+        min-width: 450px;
         overflow-x: hidden;
       }
 
@@ -28,10 +28,13 @@
   <body>
 
     <form id="find-song">
-	Song: <input type="text" name="user" id="find-song">
-	  <button >Submit</button>
+	    <input type="text" name="user" id="find-song" placeholder="Enter song and artist name">
+	  <button>Submit</button>
     </form>
-   <div id="song-list"> <ol id="songs"></ol> </div>
+   <div id="song-list">
+      <ol id="songs"></ol> 
+      <button id="clear-all">Clear All</button>
+   </div>
   </body>
 </html>
 

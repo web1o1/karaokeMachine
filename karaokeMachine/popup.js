@@ -43,10 +43,12 @@ $(function () {
     bkg.console.log("checking background song status", bkg.songDone);
 
     for (var i in songs){
-      $("#songs").append("<li>" + songs[i] + "<button class='delete'>delete</button></li>");
+      $("#songs").append("<li class='clearfix'>" + songs[i] + "<button class='delete'>delete</button></li>");
     }
 
     //bkg.console.log("songs list", songs);
+
+    //  Deleting individual songs from the queue
     $(".delete").click(function () {
       bkg.console.log("delete is clicked");
       var songs = bkg.songs;
@@ -58,6 +60,15 @@ $(function () {
       songs.splice(songInd);
       bkg.console.log("new songs list", songs);
       location.reload();
+    });
+
+    //  Deleting all songs from the queue
+    $("#clear-all").click(function () {
+      bkg.songs = [];
+      bkg.console.log("clear all is being clicked on");
+      bkg.console.log("new songs list", bkg.songs);
+      location.reload();
+
     });
     //bkg.console.log($("#songs"));
   }

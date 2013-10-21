@@ -9,7 +9,7 @@ function loadVideo () {
 	
 	//console.log("url", window.location.href);
 	// Checks if it is youtube, then parses the DOM
-	if ( (window.location.href).indexOf("www.youtube.com/results?search_query=") !== -1 ){
+	if ( (window.location.href).indexOf("www.youtube.com/results?search_query=") !== -1 && (window.location.href).indexOf("&brenda=ok") !== -1 ){
 		var first_video = $("#results > ol > li:first-child .yt-lockup-title a")[0];
 
 		var vid_link = first_video.href + "&enablejsapi=1";
@@ -18,12 +18,12 @@ function loadVideo () {
 		console.log("vid link", vid_link);
 
 		//  Loads in the video
-		window.location.href = vid_link;
+		window.location.href = vid_link + "&brenda=ok";
 
 	}
 
 	// script for page that plays video
-	if ( (window.location.href).indexOf("http://www.youtube.com/watch?v=") !== -1 ){
+	if ( (window.location.href).indexOf("http://www.youtube.com/watch?v=") !== -1 && (window.location.href).indexOf("&brenda=ok") !== -1 ){
 
 		// Check if video is done
 		//console.log("movie_player", $("#movie_player")[0]);

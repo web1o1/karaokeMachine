@@ -3,9 +3,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Karaoke Helper",
+  "name": "CatBird Karaoke Machine",
   "description": "Autoplay songs and lyrics for karaoke!",
-  "version": "1.0",
+  "version": "0.0.0.1",
 
   "permissions": [
     "tabs", 
