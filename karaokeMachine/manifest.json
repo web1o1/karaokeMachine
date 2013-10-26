@@ -5,7 +5,7 @@
 
   "name": "CatBird Karaoke Machine",
   "description": "Autoplay songs and lyrics for karaoke!",
-  "version": "0.0.0.1",
+  "version": "0.0.0.3",
 
   "permissions": [
     "tabs", 

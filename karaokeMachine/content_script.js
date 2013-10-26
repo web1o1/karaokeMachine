@@ -52,20 +52,27 @@ function loadRapGenius () {
 
 	console.log("url", window.location.href);
 	// Checks if it is rapgenius, then parses the DOM
-	if ( (window.location.href).indexOf("rapgenius") !== -1){
-		var first_lyrics = $(".search_results > li:first-child > a")[0];
-
-		var lyrics_link = first_lyrics.href;
-
-		console.log("lyrics", first_lyrics);
-		console.log("vid link", lyrics_link);
-
-		//Loads in window
-		window.location.href = lyrics_link;
+	if ( (window.location.href).indexOf("http://rapgenius.com/search?hide_unexplained_songs=false&q=") !== -1 && (window.location.href).indexOf("&brenda=ok")){
 
 		chrome.runtime.sendMessage({greeting: "lyrics"}, function(response) {
 		  console.log(response.farewell);
 		});
+
+		//  If the song is found in rapgenius, crawl the search page
+		if ($(".search_results").children().length > 0){
+			var first_lyrics = $(".search_results > li:first-child > a")[0];
+
+			var lyrics_link = first_lyrics.href;
+
+			console.log("lyrics", first_lyrics);
+			console.log("vid link", lyrics_link);
+
+			//Loads in window
+			window.location.href = lyrics_link;
+		}
+
+		//  Else, crawl the lyrics from google
+
 
 	}
 
