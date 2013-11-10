@@ -2,6 +2,7 @@
 var videoFinished = "is not finished";
 
 var lyricsTab;
+var videoTab;
 var songDone = false;
 
 var songs = [];
@@ -19,6 +20,11 @@ chrome.runtime.onMessage.addListener(
     	sendResponse({farewell: "goodbye"});
     }
 
+    if (request.greeting == "video-tab"){
+      videoTab = sender.tab.id;
+      sendResponse({farewell: "goodbye"});
+    }
+
     //  Closes these windows
     if (request.greeting == "video"){
       sendResponse({farewell: "goodbye"});
@@ -29,9 +35,9 @@ chrome.runtime.onMessage.addListener(
       //  Removes first song from list
       songs.shift();
       console.log("song list", songs);
-	  var songInput = songs[0];
+	    var songInput = songs[0];
 
-	  if (songs[0]){
+	    if (songs[0]){
 
 	      var videoQ = "http://www.youtube.com/results?search_query=" + songInput + "&brenda=ok";
 	      var lyricsQ = "http://rapgenius.com/search?hide_unexplained_songs=false&q=" + songInput + "&brenda=ok";
@@ -44,5 +50,31 @@ chrome.runtime.onMessage.addListener(
 	        //bkg.console.log("tab", tab);
 	      });
   		}
+    }
+
+    if (request.greeting == "skip-song"){
+      sendResponse({farewell: "goodbye"});
+      songDone = true;
+      chrome.tabs.remove(lyricsTab);
+      chrome.tabs.remove(videoTab);
+
+      //  Removes first song from list
+      songs.shift();
+      console.log("song list", songs);
+      var songInput = songs[0];
+
+      if (songs[0]){
+
+        var videoQ = "http://www.youtube.com/results?search_query=" + songInput + "&brenda=ok";
+        var lyricsQ = "http://rapgenius.com/search?hide_unexplained_songs=false&q=" + songInput + "&brenda=ok";
+
+      chrome.tabs.create({'url': videoQ}, function(tab) {
+        //bkg.console.log("tab", tab);
+      });
+        //  Lyrics tab to create
+        chrome.tabs.create({'url': lyricsQ}, function(tab) {
+          //bkg.console.log("tab", tab);
+        });
+      }
     }
 });

@@ -29,6 +29,10 @@ function loadVideo () {
 		//console.log("movie_player", $("#movie_player")[0]);
 		setInterval(getVidState, 5000);
 
+		chrome.runtime.sendMessage({greeting: "video-tab"}, function(response) {
+		  console.log(response.farewell);
+		});
+
 		function getVidState () {
 			var video_state = document.getElementById("movie_player").getPlayerState();
 			console.log("video state", video_state);
@@ -51,8 +55,11 @@ function loadVideo () {
 function loadRapGenius () {
 
 	console.log("url", window.location.href);
+
+	var url = window.location.href;
 	// Checks if it is rapgenius, then parses the DOM
-	if ( (window.location.href).indexOf("http://rapgenius.com/search?hide_unexplained_songs=false&q=") !== -1 && (window.location.href).indexOf("&brenda=ok")){
+
+	if ( (url).indexOf("http://rapgenius.com/search?hide_unexplained_songs=false&q=") !== -1 && (url).indexOf("&brenda=ok")){
 
 		chrome.runtime.sendMessage({greeting: "lyrics"}, function(response) {
 		  console.log(response.farewell);
@@ -70,11 +77,45 @@ function loadRapGenius () {
 			//Loads in window
 			window.location.href = lyrics_link;
 		}
-
 		//  Else, crawl the lyrics from google
 
+		else {
+
+			var song_name = url.substring(url.indexOf("&q=") + 3, url.indexOf("&brenda=ok"));
+
+			var google_lyrics_query = "https://www.google.com/search?q=" + song_name + " lyrics&brenda=ok";
+
+			window.location.href = google_lyrics_query;
+
+		}
 
 	}
+
+
+}
+
+function loadGoogleLyrics(){
+
+	//  TODO: LOAD IN SONG LYRICS, SEND MESSAGE TO BACKGROUND PAGE
+
+	url = window.location.href;
+	//console.log("loadRapGenius called");
+	if ( url.indexOf("https://www.google.com/search?q=") !== -1 &&  url.indexOf("&brenda=ok") !== -1){
+
+		var first_lyrics = $("#rso > li:first-child .rc > .r a")[0];
+		var lyrics_link = first_lyrics.href;
+
+		console.log("first_lyrics", first_lyrics);
+
+		chrome.runtime.sendMessage({greeting: "lyrics"}, function(response) {
+		  console.log(response.farewell);
+		});
+
+		window.location.href = lyrics_link;
+
+	}
+
+
 
 }
 
@@ -83,5 +124,7 @@ $(function () {
 	loadVideo();
 
 	loadRapGenius();
+
+	loadGoogleLyrics();
 
 });
