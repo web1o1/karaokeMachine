@@ -17,7 +17,7 @@ $(function () {
 
       // Rap Genius song search
       // End query for same purpose
-      var lyricsQ = "http://rapgenius.com/search?hide_unexplained_songs=false&q=" + songInput + "&brenda=ok";
+      var lyricsQ = "https://www.google.com/search?q=" + songInput + " lyrics rapgenius&brenda=ok";
 
       //  Video tab to create
       chrome.tabs.create({'url': videoQ}, function(tab) {
@@ -36,7 +36,6 @@ $(function () {
     bkg.songs.push(songInput);
 
   });
-
   window.onload = function (){
     var songs = bkg.songs;
 
@@ -47,7 +46,7 @@ $(function () {
       // add a skip button
       bkg.console.log("song element", i);
       if(i === 0){
-        $("#songs").append("<li class='clearfix'>" + songs[i] + "<button class='skip'>skip</button></li>");
+        $("#songs").append("<li class='clearfix'>" + songs[i] + "<button class='delete'>delete</button><button class='skip'>skip</button></li>");
       }
       else{
         $("#songs").append("<li class='clearfix'>" + songs[i] + "<button class='delete'>delete</button></li>");
